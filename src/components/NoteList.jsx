@@ -1,5 +1,6 @@
 import React from "react";
 import NoteItem from "./NoteItem";
+import PropTypes from "prop-types";
 function NoteList({ notes, onDelete, onArchive }) {
   return (
     <section className="notes-list">
@@ -15,10 +16,14 @@ function NoteList({ notes, onDelete, onArchive }) {
           />
         ))
       ) : (
-        <p className="notes-list__empty-message">Catatan Tidak Tersedia</p>
+        <p className="notes-list-empty">Catatan Tidak Tersedia</p>
       )}
     </section>
   );
+}
+
+NoteList.proptTypes = {
+  notes: PropTypes.arrayOf(PropTypes.object).isRequired,
 }
 
 export default NoteList;

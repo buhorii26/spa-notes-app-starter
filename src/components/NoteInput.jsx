@@ -1,65 +1,63 @@
 import React from "react";
+import { IoCheckmark } from "react-icons/io5";
+
 class NoteInput extends React.Component {
   constructor(props) {
     super(props);
 
-    // inisialisasi state
     this.state = {
       title: "",
       body: "",
-      limit: 50,
     };
-    //binding
-    this.onTitleChangeEventHandler = this.onTitleChangeEventHandler.bind(this);
-    this.onBodyChangeEventHandler = this.onBodyChangeEventHandler.bind(this);
-    this.onSubmitEventHandler = this.onSubmitEventHandler.bind(this);
   }
-  onTitleChangeEventHandler = (e) => {
-    if (this.state.limit >= 0 && e.target.value.length <= 50) {
-      this.setState(() => ({
-        title: e.target.value,
-        limit: 50 - e.target.value.length,
-      }));
-    }
-  };
-  onBodyChangeEventHandler = (e) => {
+
+  onTitleChangeEventHandler = (event) => {
     this.setState(() => ({
-      body: e.target.value,
+      title: event.target.value,
     }));
   };
-  onSubmitEventHandler = (e) => {
-    e.preventDefault();
+
+  onBodyChangeEventHandler = (event) => {
+    this.setState(() => ({
+      body: event.target.value,
+    }));
+  };
+
+  onSubmitEventHandler = (event) => {
+    event.preventDefault();
     this.props.addNote(this.state);
-    this.setState(() => ({
-      title: "",
-      body: "",
-      limit: 50,
-    }));
   };
+
   render() {
     return (
-      <div className="note-input">
-        <h2 className="note-input__title">Buat Catatan</h2>
-        <p className="note-input__title__char-limit">
-          Sisa Karakter: {this.state.limit}
-        </p>
-        <form className="note-input__body" onSubmit={this.onSubmitEventHandler}>
+      <>
+        <div className="add-new-page__input">
           <input
+            className="add-new-page__input__title"
             type="text"
-            placeholder="Ini adalah judul..."
+            placeholder="Catatan Rahasia"
             value={this.state.title}
             onChange={this.onTitleChangeEventHandler}
-            required
           />
-          <textarea
-            placeholder="Tuliskan catatanmu disini..."
+          <input
+            className="add-new-page__input__body"
+            type="text"
+            placeholder="Sebenarya saya adalah..."
             value={this.state.body}
             onChange={this.onBodyChangeEventHandler}
-            required
-          ></textarea>
-          <button type="submit">Buat</button>
-        </form>
-      </div>
+          />
+        </div>
+        <div className="add-new-page__action">
+          <button
+            className="action"
+            type="submit"
+            title="simpan"
+            onClick={this.onSubmitEventHandler}
+          >
+            <IoCheckmark />
+          </button>
+        </div>
+      </>
     );
   }
 }

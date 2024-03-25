@@ -1,6 +1,7 @@
 import React from "react";
 import { useSearchParams } from "react-router-dom";
-import { FiPlus } from "react-icons/fi";
+import PropTypes from "prop-types";
+import { FaPlus } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import NoteList from "../components/NoteList";
 import SearchBar from "../components/SearchBar";
@@ -28,58 +29,18 @@ class HomePage extends React.Component {
     this.onDeleteNoteHandler = this.onDeleteNoteHandler.bind(this);
     this.onKeywordChangeHandler = this.onKeywordChangeHandler.bind(this);
   }
+
   onKeywordChangeHandler(keyword) {
     this.setState(() => {
       return {
         keyword,
       };
     });
-    this.props.keywordChange(keyword);
   }
 
   onDeleteNoteHandler(id) {
-    deleteNote(id);
-
-    // update the contact state from data.js
-    this.setState(() => {
-      return {
-        notes: getAllNotes(),
-      };
-    });
-  }
-  onAddNoteHandler({ title, body }) {
-    this.setState((prevState) => {
-      return {
-        notes: [
-          ...prevState.notes,
-          {
-            id: +new Date(),
-            title,
-            body,
-            createdAt: new Date().toISOString(),
-            archived: false,
-          },
-        ],
-      };
-    });
-  }
-  onArchiveHandler(id) {
-    const notes = this.state.notes.map((note) =>
-      note.id === id
-        ? {
-            ...note,
-            archived: !note.archived,
-          }
-        : note
-    );
+    const notes = this.state.notes.filter((notes) => notes.id !== id);
     this.setState({ notes });
-  }
-  onSearch(title) {
-    this.setState(() => {
-      return {
-        search: title,
-      };
-    });
   }
   render() {
     const notes = this.state.notes.filter((note) => {
@@ -101,8 +62,8 @@ class HomePage extends React.Component {
         />
         <div className="homepage__action">
           <button className="action" type="button" title="Tambah">
-            <Link to="/add">
-              <FiPlus />
+            <Link to="/add" className="action-link">
+              <FaPlus />
             </Link>
           </button>
         </div>
@@ -110,5 +71,10 @@ class HomePage extends React.Component {
     );
   }
 }
+
+HomePage.propTypes = {
+  defaultKeyword: PropTypes.string,
+  keywordChange: PropTypes.func.isRequired,
+};
 
 export default HomePageWrapper;

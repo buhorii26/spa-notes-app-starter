@@ -1,9 +1,12 @@
 import React from "react";
-//import { Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Navigation from "./components/Navigation";
-import HomePage from "./pages/HomePage";
-//import AddPage from "../pages/AddPage";
+import HomePageWrapper from "./pages/HomePage";
+import DetailPageNoteWrapper from "./pages/DetailPageNote";
+import ArchiveListDetailWrapper from "./pages/ArchiveListDetail";
+import ArchivePageWrapper from "./pages/ArchivePage";
+import AddPage from "./pages/AddPage";
 
 function App() {
   return (
@@ -15,7 +18,13 @@ function App() {
         <Navigation />
       </header>
       <main>
-        <HomePage />
+        <Routes>
+          <Route path="/" element={<HomePageWrapper />} />
+          <Route path="/archives" element={<ArchivePageWrapper />} />
+          <Route path="/archives/:id" element={<ArchiveListDetailWrapper />} />
+          <Route path="/notes/:id" element={<DetailPageNoteWrapper />} />
+          <Route path="/add" element={<AddPage />} />
+        </Routes>
       </main>
     </div>
   );
