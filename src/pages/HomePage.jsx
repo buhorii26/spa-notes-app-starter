@@ -5,7 +5,7 @@ import { FaPlus } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import NoteList from "../components/NoteList";
 import SearchBar from "../components/SearchBar";
-import { getAllNotes } from "../utils/local-data";
+import { getActiveNotes} from "../utils/local-data";
 
 function HomePageWrapper() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -23,13 +23,18 @@ class HomePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      notes: getAllNotes(),
+      notes: getActiveNotes(),
       keyword: props.defaultKeyword || "",
     };
     this.onDeleteNoteHandler = this.onDeleteNoteHandler.bind(this);
     this.onKeywordChangeHandler = this.onKeywordChangeHandler.bind(this);
+    this.onArchiveHandler = this.onArchiveHandler.bind(this);
   }
 
+  onDeleteNoteHandler(id) {
+    const notes = this.state.notes.filter((notes) => notes.id !== id);
+    this.setState({ notes });
+  }
   onKeywordChangeHandler(keyword) {
     this.setState(() => {
       return {
@@ -38,8 +43,15 @@ class HomePage extends React.Component {
     });
   }
 
-  onDeleteNoteHandler(id) {
-    const notes = this.state.notes.filter((notes) => notes.id !== id);
+  onArchiveHandler(id) {
+    const notes = this.state.notes.map((note) =>
+      note.id === id
+        ? {
+            ...note,
+            archived: !note.archived,
+          }
+        : note
+    );
     this.setState({ notes });
   }
   render() {
