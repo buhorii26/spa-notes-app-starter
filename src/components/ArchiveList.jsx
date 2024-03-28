@@ -1,7 +1,7 @@
 import React from "react";
 import ArchiveItem from "./ArchiveItem";
 import PropTypes from "prop-types";
-function ArchiveList({ notes, onDelete, onArchive }) {
+function ArchiveList({ notes }) {
   return (
     <section className="notes-list">
       {notes.length ? (
@@ -9,9 +9,6 @@ function ArchiveList({ notes, onDelete, onArchive }) {
           <ArchiveItem
             key={note.id}
             id={note.id}
-            onDelete={onDelete}
-            onArchive={onArchive}
-            isArchive={note.archived}
             {...note}
           />
         ))

@@ -1,11 +1,11 @@
 import React from "react";
 import { useSearchParams } from "react-router-dom";
 import PropTypes from "prop-types";
-import { FaPlus } from "react-icons/fa6";
+import { BsFillPlusSquareFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import NoteList from "../components/NoteList";
 import SearchBar from "../components/SearchBar";
-import { getActiveNotes} from "../utils/local-data";
+import { getActiveNotes } from "../utils/local-data";
 
 function HomePageWrapper() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -18,7 +18,6 @@ function HomePageWrapper() {
     <HomePage defaultKeyword={keyword} keywordChange={changeSearchParams} />
   );
 }
-
 class HomePage extends React.Component {
   constructor(props) {
     super(props);
@@ -28,7 +27,6 @@ class HomePage extends React.Component {
     };
     this.onDeleteNoteHandler = this.onDeleteNoteHandler.bind(this);
     this.onKeywordChangeHandler = this.onKeywordChangeHandler.bind(this);
-    this.onArchiveHandler = this.onArchiveHandler.bind(this);
   }
 
   onDeleteNoteHandler(id) {
@@ -41,18 +39,6 @@ class HomePage extends React.Component {
         keyword,
       };
     });
-  }
-
-  onArchiveHandler(id) {
-    const notes = this.state.notes.map((note) =>
-      note.id === id
-        ? {
-            ...note,
-            archived: !note.archived,
-          }
-        : note
-    );
-    this.setState({ notes });
   }
   render() {
     const notes = this.state.notes.filter((note) => {
@@ -67,17 +53,13 @@ class HomePage extends React.Component {
           keyword={this.state.keyword}
           keywordChange={this.onKeywordChangeHandler}
         />
-        <NoteList
-          notes={notes}
-          onDelete={this.onDeleteNoteHandler}
-          onArchive={this.onArchiveHandler}
-        />
+        <NoteList notes={notes} onDelete={this.onDeleteNoteHandler} />
         <div className="homepage__action">
-          <button className="action" type="button" title="Tambah">
-            <Link to="/add" className="action-link">
-              <FaPlus />
-            </Link>
-          </button>
+          <Link to="/notes/add" className="action-link">
+            <button className="action" type="button" title="Tambah">
+              <BsFillPlusSquareFill />
+            </button>
+          </Link>
         </div>
       </section>
     );
@@ -85,7 +67,7 @@ class HomePage extends React.Component {
 }
 
 HomePage.propTypes = {
-  defaultKeyword: PropTypes.string,
+  defaultKeyword: PropTypes.string.isRequired,
   keywordChange: PropTypes.func.isRequired,
 };
 

@@ -1,7 +1,7 @@
 import React from "react";
-import { BsCheckLg } from "react-icons/bs";
+import { IoCheckmark } from "react-icons/io5";
 
-class NoteInput extends React.Component {
+class ArchiveInput extends React.Component {
   constructor(props) {
     super(props);
 
@@ -11,20 +11,20 @@ class NoteInput extends React.Component {
     };
   }
 
-  onTitleChangeEventHandler = (e) => {
+  onTitleChangeEventHandler = (event) => {
     this.setState(() => ({
-      title: e.target.value,
+      title: event.target.value,
     }));
   };
 
-  onBodyChangeEventHandler = (e) => {
+  onBodyChangeEventHandler = (event) => {
     this.setState(() => ({
-      body: e.target.value,
+      body: event.target.value,
     }));
   };
 
-  onSubmitEventHandler = (e) => {
-    e.preventDefault();
+  onSubmitEventHandler = (event) => {
+    event.preventDefault();
     this.props.addNote(this.state);
   };
 
@@ -54,7 +54,7 @@ class NoteInput extends React.Component {
             title="simpan"
             onClick={this.onSubmitEventHandler}
           >
-            <BsCheckLg />
+            <IoCheckmark />
           </button>
         </div>
       </>
@@ -62,4 +62,4 @@ class NoteInput extends React.Component {
   }
 }
 
-export default NoteInput;
+export default ArchiveInput;

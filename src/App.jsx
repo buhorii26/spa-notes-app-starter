@@ -23,7 +23,7 @@ function App() {
           <Route path="/archives" element={<ArchivePageWrapper />} />
           <Route path="/archives/:id" element={<ArchiveListDetailWrapper />} />
           <Route path="/notes/:id" element={<DetailPageNoteWrapper />} />
-          <Route path="/add" element={<AddPage />} />
+          <Route path="/notes/add" element={<AddPage />} />
         </Routes>
       </main>
     </div>

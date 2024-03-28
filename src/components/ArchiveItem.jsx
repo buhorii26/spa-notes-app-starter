@@ -8,17 +8,15 @@ function ArchiveItem({
   body,
   createdAt,
   id,
-  onDelete,
-  onArchive,
-  isArchive,
 }) {
   return (
     <div className="note-item">
-      <ArchiveItemContent id={id} title={title} body={body} createdAt={createdAt} />
-      <div className="note-item__action">
-        <DeleteButton id={id} onDelete={onDelete} />
-        <ArchiveButton id={id} onArchive={onArchive} isArchive={isArchive} />
-      </div>
+      <ArchiveItemContent
+        id={id}
+        title={title}
+        body={body}
+        createdAt={createdAt}
+      />
     </div>
   );
 }

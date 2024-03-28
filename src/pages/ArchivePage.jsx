@@ -27,14 +27,7 @@ class ArchivePage extends React.Component {
       keyword: props.defaultKeyword || "",
     };
 
-    this.onDeleteNoteHandler = this.onDeleteNoteHandler.bind(this);
     this.onKeywordChangeHandler = this.onKeywordChangeHandler.bind(this);
-    this.onArchiveHandler = this.onArchiveHandler.bind(this);
-  }
-
-  onDeleteNoteHandler(id) {
-    const notes = this.state.notes.filter((notes) => notes.id !== id);
-    this.setState({ notes });
   }
   onKeywordChangeHandler(keyword) {
     this.setState(() => {
@@ -42,17 +35,6 @@ class ArchivePage extends React.Component {
         keyword,
       };
     });
-  }
-  onArchiveHandler(id) {
-    const notes = this.state.notes.map((note) =>
-      note.id === id
-        ? {
-            ...note,
-            archived: !note.archived,
-          }
-        : note
-    );
-    this.setState({ notes });
   }
   render() {
     const notes = this.state.notes.filter((note) => {
@@ -72,16 +54,7 @@ class ArchivePage extends React.Component {
         />
         <ArchiveList
           notes={archivedNotes}
-          onDelete={this.onDeleteNoteHandler}
-          onArchive={this.onArchiveHandler}
         />
-        <div className="homepage__action">
-          <button className="action" type="button" title="Tambah">
-            <Link to="/add" className="action-link">
-              <FaPlus />
-            </Link>
-          </button>
-        </div>
       </section>
     );
   }
