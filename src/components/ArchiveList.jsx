@@ -19,7 +19,7 @@ function ArchiveList({ notes }) {
   );
 }
 
-ArchiveList.proptTypes = {
+ArchiveList.propTypes = {
   notes: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 

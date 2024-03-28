@@ -6,19 +6,24 @@ import { BsTrash3 } from "react-icons/bs";
 
 function DeleteButton({ id }) {
   const navigate = useNavigate();
-  const deleteHandler = () =>{
+  const deleteHandler = () => {
     deleteNote(id);
     navigate("/");
-  }
+  };
   return (
-    <button className="action" type="button" title="Hapus" onClick={deleteHandler}>
+    <button
+      className="action"
+      type="button"
+      title="Hapus"
+      onClick={deleteHandler}
+    >
       <BsTrash3 />
     </button>
   );
 }
 
 DeleteButton.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 export default DeleteButton;

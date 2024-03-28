@@ -26,7 +26,7 @@ class DetailPageNote extends React.Component {
 }
 
 DetailPageNote.propTypes = {
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
   };
   
   export default DetailPageNoteWrapper;

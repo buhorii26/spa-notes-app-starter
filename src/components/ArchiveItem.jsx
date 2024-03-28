@@ -1,13 +1,12 @@
 import React from "react";
 import ArchiveItemContent from "./ArchiveItemContent";
-import DeleteButton from "./DeleteButton";
-import ArchiveButton from "./ArchiveButton";
+import PropTypes from "prop-types";
 
 function ArchiveItem({
-  title,
-  body,
-  createdAt,
   id,
+  title,
+  createdAt,
+  body,
 }) {
   return (
     <div className="note-item">
@@ -21,4 +20,10 @@ function ArchiveItem({
   );
 }
 
+ArchiveItem.propTypes = {
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  createdAt: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+};
 export default ArchiveItem;

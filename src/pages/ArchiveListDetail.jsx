@@ -2,7 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { getNote } from "../utils/local-data";
 import PropTypes from "prop-types";
-import ArchiveItemContent from "../components/ArchiveItemContent";
+import ArchiveItemDetail from "../components/ArchiveItemDetail";
 
 function ArchiveListDetailWrapper() {
   const { id } = useParams();
@@ -21,12 +21,12 @@ class ArchiveListDetail extends React.Component {
           return <p>Notes is not found!</p>;
         }
     
-        return <ArchiveItemContent {...this.state.note} />;
+        return <ArchiveItemDetail {...this.state.note} />;
       }
 }
 
 ArchiveListDetail.propTypes = {
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
   };
   
   export default ArchiveListDetailWrapper;

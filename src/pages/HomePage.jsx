@@ -1,7 +1,7 @@
 import React from "react";
 import { useSearchParams } from "react-router-dom";
 import PropTypes from "prop-types";
-import { BsFillPlusSquareFill } from "react-icons/bs";
+import { FiPlus } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import NoteList from "../components/NoteList";
 import SearchBar from "../components/SearchBar";
@@ -57,7 +57,7 @@ class HomePage extends React.Component {
         <div className="homepage__action">
           <Link to="/notes/add" className="action-link">
             <button className="action" type="button" title="Tambah">
-              <BsFillPlusSquareFill />
+              <FiPlus />
             </button>
           </Link>
         </div>
@@ -67,7 +67,7 @@ class HomePage extends React.Component {
 }
 
 HomePage.propTypes = {
-  defaultKeyword: PropTypes.string.isRequired,
+  defaultKeyword: PropTypes.string,
   keywordChange: PropTypes.func.isRequired,
 };
 
