@@ -1,8 +1,6 @@
 import React from "react";
 import { useSearchParams } from "react-router-dom";
 import PropTypes from "prop-types";
-import { FaPlus } from "react-icons/fa6";
-import { Link } from "react-router-dom";
 import ArchiveList from "../components/ArchiveList";
 import SearchBar from "../components/SearchBar";
 import { getArchivedNotes } from "../utils/local-data";
@@ -52,9 +50,7 @@ class ArchivePage extends React.Component {
           keyword={this.state.keyword}
           keywordChange={this.onKeywordChangeHandler}
         />
-        <ArchiveList
-          notes={archivedNotes}
-        />
+        <ArchiveList notes={archivedNotes} />
       </section>
     );
   }
@@ -62,7 +58,6 @@ class ArchivePage extends React.Component {
 
 ArchivePage.propTypes = {
   defaultKeyword: PropTypes.string,
-  keywordChange: PropTypes.func.isRequired,
 };
 
 export default ArchivePageWrapper;

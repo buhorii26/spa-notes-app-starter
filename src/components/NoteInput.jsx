@@ -1,5 +1,6 @@
 import React from "react";
 import { BsCheckLg } from "react-icons/bs";
+import PropTypes from "prop-types";
 
 class NoteInput extends React.Component {
   constructor(props) {
@@ -62,4 +63,7 @@ class NoteInput extends React.Component {
   }
 }
 
+NoteInput.propTypes = {
+  addNote: PropTypes.func.isRequired,
+}
 export default NoteInput;
