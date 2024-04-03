@@ -11,7 +11,6 @@ import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
 import { getUserLogged, putAccessToken } from "./utils/network-data";
 import { LocaleProvider } from "./contexts/LocaleContext";
-import ToggleTheme from "./components/ToggleTheme";
 
 class App extends React.Component {
   constructor(props) {
@@ -111,7 +110,6 @@ class App extends React.Component {
                   : "Notes App"}
               </h1>
             </Link>
-            <ToggleTheme value={this.state.localeContext.toggleTheme}/>
             <Navigation
               logout={this.onLogout}
               name={this.state.authedUser.name}

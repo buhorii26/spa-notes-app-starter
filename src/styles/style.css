@@ -16,13 +16,19 @@
   --font-color: #eee;
   --background-color: #333;
 }
+.toggleTheme {
+  display: flex;
+  justify-content: space-between;
+}
 
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
-
+.translate-icon {
+  margin-left: 5px;
+}
 a {
   color: var(--on-background);
 }
