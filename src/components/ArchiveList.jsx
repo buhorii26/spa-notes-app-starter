@@ -6,14 +6,10 @@ function ArchiveList({ notes }) {
     <section className="notes-list">
       {notes.length ? (
         notes.map((note) => (
-          <ArchiveItem
-            key={note.id}
-            id={note.id}
-            {...note}
-          />
+          <ArchiveItem key={note.id} id={note.id} {...note} />
         ))
       ) : (
-        <p className="notes-list-empty">Arsip Tidak Tersedia</p>
+        <p className="notes-list-empty">Catatan Tidak Tersedia</p>
       )}
     </section>
   );

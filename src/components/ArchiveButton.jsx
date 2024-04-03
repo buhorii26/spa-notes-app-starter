@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import { BsFileEarmarkArrowDown } from "react-icons/bs";
-import { archiveNote } from "../utils/local-data";
+import { archiveNote } from "../utils/network-data";
 
 function ArchiveButton({ id }) {
   const navigate = useNavigate();

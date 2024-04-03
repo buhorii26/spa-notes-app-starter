@@ -1,63 +1,39 @@
 import React from "react";
 import { useSearchParams } from "react-router-dom";
-import PropTypes from "prop-types";
 import ArchiveList from "../components/ArchiveList";
+import { getArchivedNotes, deleteNote } from "../utils/network-data";
 import SearchBar from "../components/SearchBar";
-import { getArchivedNotes } from "../utils/local-data";
 
-function ArchivePageWrapper() {
+function ArchivePage() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const keyword = searchParams.get("keyword");
-  function changeSearchParams(keyword) {
+  const [archivedNotes, setArchivedNotes] = React.useState([]);
+  const [keyword, setKeyword] = React.useState(() => {
+    return searchParams.get("keyword") || "";
+  });
+  React.useEffect(() => {
+    getArchivedNotes().then(({ data }) => {
+      setArchivedNotes(data);
+    });
+  }, []);
+  async function onDeleteNoteHandler(id) {
+    await deleteNote(id);
+    const { data } = await getAllNotes();
+    setArchivedNotes(data);
+  }
+  function onKeywordChangeHandler(keyword) {
+    setKeyword(keyword);
     setSearchParams({ keyword });
   }
-
+  const filteredNotes = archivedNotes.filter((archivedNote) => {
+    return archivedNote.title.toLowerCase().includes(keyword.toLowerCase());
+  });
   return (
-    <ArchivePage defaultKeyword={keyword} keywordChange={changeSearchParams} />
+    <section className="homepage">
+      <h2>Catatan Arsip</h2>
+      <SearchBar keyword={keyword} keywordChange={onKeywordChangeHandler} />
+      <ArchiveList notes={filteredNotes} onDelete={onDeleteNoteHandler} />
+    </section>
   );
 }
 
-class ArchivePage extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      notes: getArchivedNotes(),
-      keyword: props.defaultKeyword || "",
-    };
-
-    this.onKeywordChangeHandler = this.onKeywordChangeHandler.bind(this);
-  }
-  onKeywordChangeHandler(keyword) {
-    this.setState(() => {
-      return {
-        keyword,
-      };
-    });
-  }
-  render() {
-    const notes = this.state.notes.filter((note) => {
-      return note.title
-        .toLowerCase()
-        .includes(this.state.keyword.toLowerCase());
-    });
-    const archivedNotes = notes.filter((note) => {
-      return note.archived === true;
-    });
-    return (
-      <section className="archivepage">
-        <h2>Catatan Arsip</h2>
-        <SearchBar
-          keyword={this.state.keyword}
-          keywordChange={this.onKeywordChangeHandler}
-        />
-        <ArchiveList notes={archivedNotes} />
-      </section>
-    );
-  }
-}
-
-ArchivePage.propTypes = {
-  defaultKeyword: PropTypes.string,
-};
-
-export default ArchivePageWrapper;
+export default ArchivePage;

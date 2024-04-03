@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
-import { deleteNote } from "../utils/local-data";
+import { deleteNote } from "../utils/network-data";
 import { BsTrash3 } from "react-icons/bs";
 
 function DeleteButton({ id }) {

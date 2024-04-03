@@ -9,14 +9,12 @@
   --on-background: #ffffff;
   --on-background-grey: #c7c7c7;
   --on-surface: #ffffff;
+  /* --font-color: #eee;
+  --background-color: #333; */
 }
-
-[data-theme="light"] {
-  --background: #dddddd;
-  --suface: #ffffff;
-  --on-background: #333333;
-  --on-background-grey: #6d6d6d;
-  --on-surface: #333333;
+[data-theme="dark"] {
+  --font-color: #eee;
+  --background-color: #333;
 }
 
 * {
@@ -43,13 +41,34 @@ body {
 header {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   padding: 16px;
   border-bottom: 1px solid var(--on-background);
 }
+.note-app__header {
+  display: flex;
+  align-items: center;
+  padding: 32px 0;
+}
 
-header h1 {
+.note-app__header h1 {
+  font-weight: normal;
+  font-size: 32px;
   flex: 1;
+}
+
+.navigation ul li a {
+  font-size: 28px;
+  color: white;
+}
+
+.navigation ul li button {
+  font-family: "Inter", sans-serif;
+  font-size: 28px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 header .navigation ul li {

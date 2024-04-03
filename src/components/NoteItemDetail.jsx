@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { showFormattedDate } from "../utils";
+import { showFormattedDate } from "../utils/index";
 import DeleteButton from "./DeleteButton";
 import ArchiveButton from "./ArchiveButton";
 

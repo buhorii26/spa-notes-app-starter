@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import { BsFileEarmarkArrowUp } from "react-icons/bs";
-import { unarchiveNote } from "../utils/local-data";
+import { unarchiveNote } from "../utils/network-data";
 
 function UnArchiveButton({ id }) {
   const navigate = useNavigate();
