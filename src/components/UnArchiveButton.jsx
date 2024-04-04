@@ -23,7 +23,7 @@ function UnArchiveButton({ id }) {
 }
 
 UnArchiveButton.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.string,
 };
 
 export default UnArchiveButton;

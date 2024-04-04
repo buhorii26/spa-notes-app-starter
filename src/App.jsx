@@ -41,6 +41,7 @@ class App extends React.Component {
             const newTheme = prevState.theme === "light" ? "dark" : "light";
             // menyimpan nilai tema baru ke local storage
             localStorage.setItem("theme", newTheme);
+            // mengembalikan dengan nilai theme terbaru.
             return {
               theme: newTheme,
             };
@@ -103,11 +104,10 @@ class App extends React.Component {
               <nav className="navigation">
                 <ul>
                   <li>
-
-                  <TranslateButton />
+                    <TranslateButton />
                   </li>
                   <li>
-                  <ThemeButton />
+                    <ThemeButton />
                   </li>
                 </ul>
               </nav>

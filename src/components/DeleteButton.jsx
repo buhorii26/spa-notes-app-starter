@@ -23,7 +23,7 @@ function DeleteButton({ id }) {
 }
 
 DeleteButton.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.string,
 };
 
 export default DeleteButton;

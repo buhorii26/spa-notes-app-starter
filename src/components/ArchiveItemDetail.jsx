@@ -19,10 +19,10 @@ function ArchiveItemDetail({ id, title, createdAt, body }) {
 }
 
 ArchiveItemDetail.propTypes = {
-  id:PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  createdAt: PropTypes.string.isRequired,
-  body: PropTypes.string.isRequired,
+  id:PropTypes.string,
+  title: PropTypes.string,
+  createdAt: PropTypes.string,
+  body: PropTypes.string,
 };
 
 export default ArchiveItemDetail;

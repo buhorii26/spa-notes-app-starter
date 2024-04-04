@@ -19,10 +19,10 @@ function NoteItemDetail({ id, title, createdAt, body }) {
 }
 
 NoteItemDetail.propTypes = {
-  id:PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  createdAt: PropTypes.string.isRequired,
-  body: PropTypes.string.isRequired,
+  id:PropTypes.string,
+  title: PropTypes.string,
+  createdAt: PropTypes.string,
+  body: PropTypes.string,
 };
 
 export default NoteItemDetail;

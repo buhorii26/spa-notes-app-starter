@@ -17,11 +17,11 @@ class ArchiveListDetail extends React.Component {
     };
   }
   async componentDidMount() {
-    const { id } = this.props;
-    const { data } = await getNote(id);
+    const { data } = await getNote(this.props.id);
     this.setState(() => {
       return {
          archivedNotes: data,
+         initializing:false,
       };
     });
   }

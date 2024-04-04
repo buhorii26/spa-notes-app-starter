@@ -22,6 +22,7 @@ class DetailPageNote extends React.Component {
     this.setState(() => {
       return {
         notes: data,
+        initializing:false,
       };
     });
   }
