@@ -1,18 +1,19 @@
 :root {
-  --primary: #bb86fc;
-  --primary-variant: #3700b3;
-  --secondary: #03dac6;
+  --primary: #BB86FC;
+  --primary-variant: #3700B3;
+  --secondary: #03DAC6;
   --background: #121212;
   --surface: #121212;
-  --error: #cf6679;
-  --warning: #f39c12;
-  --on-background: #ffffff;
+  --error: #CF6679;
+  --warning: #F39C12;
+  --on-background: #FFFFFF;
   --on-background-grey: #c7c7c7;
-  --on-surface: #ffffff;
+  --on-surface: #FFFFFF;
 }
+
 [data-theme="light"] {
-  --background: #dddddd;
-  --suface: #ffffff;
+  --background: #DDDDDD;
+  --suface: #FFFFFF;
   --on-background: #333333;
   --on-background-grey: #6d6d6d;
   --on-surface: #333333;
@@ -23,15 +24,14 @@
   margin: 0;
   box-sizing: border-box;
 }
-.translate-icon {
-  margin-left: 5px;
-}
+
 a {
   color: var(--on-background);
 }
 
+
 body {
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 .app-container {
@@ -48,30 +48,9 @@ header {
   padding: 16px;
   border-bottom: 1px solid var(--on-background);
 }
-.note-app__header {
-  display: flex;
-  align-items: center;
-  padding: 32px 0;
-}
 
-.note-app__header h1 {
-  font-weight: normal;
-  font-size: 32px;
+header h1 {
   flex: 1;
-}
-
-.navigation ul li a {
-  font-size: 28px;
-  color: white;
-}
-
-.navigation ul li button {
-  font-family: "Inter", sans-serif;
-  font-size: 28px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 10px;
 }
 
 header .navigation ul li {
@@ -129,37 +108,10 @@ main {
   -webkit-line-clamp: 6;
   -webkit-box-orient: vertical;
 }
-.note-item__delete-button,
-.note-item__archive-button {
-  display: block;
-  width: 100%;
-  background-color: transparent;
-  border: 0;
-  padding: 8px 0;
-  font-family: "Inter", sans-serif;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.note-item__delete-button {
-  color: #ff5f52;
-}
-
-.note-item__archive-button {
-  color: #fff263;
-}
-
-.note-item__archive-button:hover {
-  color: #c49000;
-}
-
-.note-item__delete-button:hover {
-  color: #b00020;
-}
 
 .detail-page {
   margin: 0 auto;
-  margin-top: 32px;
+  margin-top: 32px; 
   width: 90%;
 }
 
@@ -170,7 +122,7 @@ main {
 }
 
 .detail-page__createdAt {
-  color: var(--on-background-grey);
+  color: var(--on-background-grey)
 }
 
 .detail-page__body {
@@ -179,9 +131,7 @@ main {
   font-size: 18px;
 }
 
-.detail-page__action,
-.homepage__action,
-.add-new-page__action {
+.detail-page__action, .homepage__action, .add-new-page__action {
   position: fixed;
   display: flex;
   gap: 16px;
@@ -213,7 +163,7 @@ main {
   background-color: transparent;
   border: 0;
   color: var(--on-background);
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 64px;
   font-weight: bold;
   padding: 8px 0;
@@ -228,7 +178,7 @@ main {
   background-color: transparent;
   border: 0;
   color: var(--on-background);
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 24px;
   padding: 8px 0;
   min-height: 500px;
@@ -236,12 +186,12 @@ main {
 
 [data-placeholder]:empty::before {
   content: attr(data-placeholder);
-  color: var(--on-background-grey);
+  color: var(--on-background-grey)
 }
 
 .search-bar input {
   margin: 16px 0;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   background-color: transparent;
   border: 1px solid var(--on-background);
   border-radius: 4px;
@@ -254,8 +204,7 @@ main {
   color: var(--on-background-grey);
 }
 
-.toggle-theme,
-.toggle-locale {
+.toggle-theme, .toggle-locale {
   background-color: transparent;
   border: 0;
   cursor: pointer;
@@ -273,21 +222,18 @@ main {
   font-size: 28px;
 }
 
-.input-login,
-.input-register {
+.input-login, .input-register {
   margin: 32px 0;
 }
 
-.input-login label,
-.input-register label {
+.input-login label, .input-register label {
   font-size: 24px;
   font-weight: lighter;
 }
 
-.input-login input,
-.input-register input {
+.input-login input, .input-register input {
   font-size: 18px;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   margin-top: 8px;
   margin-bottom: 16px;
   display: block;
@@ -296,12 +242,11 @@ main {
   background-color: transparent;
   border-radius: 8px;
   border: 3px solid var(--on-background);
-  color: var(--on-background);
+  color: var(--on-background)
 }
 
-.input-login button,
-.input-register button {
-  font-family: "Inter", sans-serif;
+.input-login button, .input-register button {
+  font-family: 'Inter', sans-serif;
   font-weight: bold;
   font-size: 24px;
   width: 100%;
@@ -329,7 +274,7 @@ main {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .detail-page__title {
+  .detail-page__title { 
     font-size: 64px;
   }
 }

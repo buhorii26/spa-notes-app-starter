@@ -13,7 +13,6 @@ import { getUserLogged, putAccessToken } from "./utils/network-data";
 import { LocaleProvider } from "./contexts/LocaleContext";
 import TranslateButton from "./components/TranslateButton";
 import ThemeButton from "./components/ThemeButton";
-//import { ThemeProvider } from "./Contexts/ThemeContext";
 
 class App extends React.Component {
   constructor(props) {
@@ -26,10 +25,16 @@ class App extends React.Component {
         locale: localStorage.getItem("locale") || "id",
         toggleLocale: () => {
           this.setState((prevState) => {
+            // mendapatkan nilai locale baru berdasarkan state sebelumnya
+            const newLocale =
+              prevState.localeContext.locale === "id" ? "en" : "id";
+            // menyimpan nilai locale baru ke local storage
+            localStorage.setItem("locale", newLocale);
+            // mengembalikan dengan nilai locale terbaru.
             return {
               localeContext: {
                 ...prevState.localeContext,
-                locale: prevState.localeContext.locale === "id" ? "en" : "id",
+                locale: newLocale,
               },
             };
           });
@@ -38,12 +43,16 @@ class App extends React.Component {
         toggleTheme: () => {
           this.setState((prevState) => {
             // mendapatkan nilai tema baru berdasarkan state sebelumnya
-            const newTheme = prevState.theme === "light" ? "dark" : "light";
+            const newTheme =
+              prevState.localeContext.theme === "light" ? "dark" : "light";
             // menyimpan nilai tema baru ke local storage
             localStorage.setItem("theme", newTheme);
             // mengembalikan dengan nilai theme terbaru.
             return {
-              theme: newTheme,
+              localeContext: {
+                ...prevState.localeContext,
+                theme: newTheme,
+              },
             };
           });
         },
@@ -53,12 +62,18 @@ class App extends React.Component {
     this.onLogout = this.onLogout.bind(this);
   }
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.theme !== this.state.theme) {
-      document.documentElement.setAttribute("data-theme", this.state.theme);
+    if (prevState.theme !== this.state.localeContext.theme) {
+      document.documentElement.setAttribute(
+        "data-theme",
+        this.state.localeContext.theme
+      );
     }
   }
   async componentDidMount() {
-    document.documentElement.setAttribute("data-theme", this.state.theme);
+    document.documentElement.setAttribute(
+      "data-theme",
+      this.state.localeContext.theme
+    );
     const { data } = await getUserLogged();
     this.setState(() => {
       return {
