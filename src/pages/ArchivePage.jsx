@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import ArchiveList from "../components/ArchiveList";
 import { getArchivedNotes, deleteNote } from "../utils/network-data";
 import SearchBar from "../components/SearchBar";
+import { LocaleConsumer } from "../contexts/LocaleContext";
 
 function ArchivePage() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -28,11 +29,20 @@ function ArchivePage() {
     return archivedNote.title.toLowerCase().includes(keyword.toLowerCase());
   });
   return (
-    <section className="homepage">
-      <h2>Catatan Arsip</h2>
-      <SearchBar keyword={keyword} keywordChange={onKeywordChangeHandler} />
-      <ArchiveList notes={filteredNotes} onDelete={onDeleteNoteHandler} />
-    </section>
+    <LocaleConsumer>
+      {({ locale }) => {
+        return (
+          <section className="homepage">
+            <h2>{locale === "id" ? "Catatan Arsip" : "Archived Note"}</h2>
+            <SearchBar
+              keyword={keyword}
+              keywordChange={onKeywordChangeHandler}
+            />
+            <ArchiveList notes={filteredNotes} onDelete={onDeleteNoteHandler} />
+          </section>
+        );
+      }}
+    </LocaleConsumer>
   );
 }
 

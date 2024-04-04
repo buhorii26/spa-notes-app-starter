@@ -3,31 +3,29 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { LocaleConsumer } from "../contexts/LocaleContext";
 import { FiLogOut } from "react-icons/fi";
-import { SiGoogletranslate } from "react-icons/si";
-import { FaMoon, FaSun } from "react-icons/fa";
+import TranslateButton from "./TranslateButton";
+import ThemeButton from "./ThemeButton";
 
 function Navigation({ logout, name }) {
   return (
     <LocaleConsumer>
-      {({ locale, toggleLocale, theme, toggleTheme }) => {
+      {({ locale }) => {
         return (
           <nav className="navigation">
             <ul>
               <li>
-                <Link to="/archives">Arsip</Link>
+                <Link to="/archives">
+                  {locale === "id" ? "Terarsip" : "Archived"}
+                </Link>
               </li>
               <li>
-                <button onClick={toggleTheme}>
-                  {theme === "light" ? <FaMoon /> : <FaSun />}
-                </button>
+                <TranslateButton />
               </li>
               <li>
-                <button onClick={toggleLocale}>
-                  <SiGoogletranslate className="translate-icon" />
-                </button>
+                  <ThemeButton />
               </li>
               <li>
-                <button onClick={logout}>
+                <button className="toggle-locale" onClick={logout}>
                   <FiLogOut /> {name}
                 </button>
               </li>

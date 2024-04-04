@@ -11,6 +11,9 @@ import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
 import { getUserLogged, putAccessToken } from "./utils/network-data";
 import { LocaleProvider } from "./contexts/LocaleContext";
+import TranslateButton from "./components/TranslateButton";
+import ThemeButton from "./components/ThemeButton";
+//import { ThemeProvider } from "./Contexts/ThemeContext";
 
 class App extends React.Component {
   constructor(props) {
@@ -31,11 +34,15 @@ class App extends React.Component {
             };
           });
         },
-        theme: "light",
+        theme: localStorage.getItem("theme") || "light",
         toggleTheme: () => {
           this.setState((prevState) => {
+            // mendapatkan nilai tema baru berdasarkan state sebelumnya
+            const newTheme = prevState.theme === "light" ? "dark" : "light";
+            // menyimpan nilai tema baru ke local storage
+            localStorage.setItem("theme", newTheme);
             return {
-              theme: prevState.theme === "light" ? "dark" : "light",
+              theme: newTheme,
             };
           });
         },
@@ -44,7 +51,13 @@ class App extends React.Component {
     this.onLoginSuccess = this.onLoginSuccess.bind(this);
     this.onLogout = this.onLogout.bind(this);
   }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.theme !== this.state.theme) {
+      document.documentElement.setAttribute("data-theme", this.state.theme);
+    }
+  }
   async componentDidMount() {
+    document.documentElement.setAttribute("data-theme", this.state.theme);
     const { data } = await getUserLogged();
     this.setState(() => {
       return {
@@ -79,12 +92,25 @@ class App extends React.Component {
       return (
         <LocaleProvider value={this.state.localeContext}>
           <div className="app-container">
-            <header>
-              <h1>
-                <Link to="/">
-                  <h1>Aplikasi Catatan</h1>
-                </Link>
-              </h1>
+            <header className=".note-app__header">
+              <Link to="/">
+                <h1>
+                  {this.state.localeContext.locale === "id"
+                    ? "Aplikasi Catatan"
+                    : "Notes App"}
+                </h1>
+              </Link>
+              <nav className="navigation">
+                <ul>
+                  <li>
+
+                  <TranslateButton />
+                  </li>
+                  <li>
+                  <ThemeButton />
+                  </li>
+                </ul>
+              </nav>
             </header>
             <main>
               <Routes>

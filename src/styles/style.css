@@ -9,16 +9,13 @@
   --on-background: #ffffff;
   --on-background-grey: #c7c7c7;
   --on-surface: #ffffff;
-  /* --font-color: #eee;
-  --background-color: #333; */
 }
-[data-theme="dark"] {
-  --font-color: #eee;
-  --background-color: #333;
-}
-.toggleTheme {
-  display: flex;
-  justify-content: space-between;
+[data-theme="light"] {
+  --background: #dddddd;
+  --suface: #ffffff;
+  --on-background: #333333;
+  --on-background-grey: #6d6d6d;
+  --on-surface: #333333;
 }
 
 * {
