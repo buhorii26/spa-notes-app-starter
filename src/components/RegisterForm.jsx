@@ -1,36 +1,5 @@
 import React from "react";
-//import useInput from "../hooks/useInput";
 import PropTypes from "prop-types";
-
-// function RegisterForm() {
-//   const [name, onNameChange] = useInput("");
-//   const [email, onEmailChange] = useInput("");
-//   const [password, onPasswordChange] = useInput("");
-
-//   return (
-//     <div className="input-register">
-//       <form>
-//         <label htmlFor="name">Name</label>
-//         <input type="name" id="name" value={name} onChange={onNameChange} />
-//         <label htmlFor="email">Email</label>
-//         <input type="email" id="email" value={email} onChange={onEmailChange} />
-//         <label htmlFor="password">Password</label>
-//         <input
-//           type="password"
-//           id="password"
-//           value={password}
-//           onChange={onPasswordChange}
-//         />
-//         <button className="input-register">Register</button>
-//       </form>
-//     </div>
-//   );
-// }
-// RegisterForm.propTypes = {
-//   register: PropTypes.func.isRequired,
-// };
-
-// export default RegisterForm;
 
 class RegisterForm extends React.Component {
   constructor(props) {

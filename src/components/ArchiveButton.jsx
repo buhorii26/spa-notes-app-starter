@@ -23,7 +23,7 @@ function ArchiveButton({ id }) {
 }
 
 ArchiveButton.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.string,
 };
 
 export default ArchiveButton;
